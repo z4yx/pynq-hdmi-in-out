@@ -1,0 +1,6 @@
+*.o
+*.dcp
+*.veo
+*.vho
+*_sim_netlist.*
+*.log
