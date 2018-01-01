@@ -170,14 +170,14 @@ rgb2dvi_0 hdmi_tx (
   .TMDS_Data_p(hdmi_tx_d_p),  // output wire [2 : 0] TMDS_Data_p
   .TMDS_Data_n(hdmi_tx_d_n),  // output wire [2 : 0] TMDS_Data_n
   .aRst(aRst),                // input wire aRst
-  .vid_pData(vid_pData),      // input wire [23 : 0] vid_pData
-  .vid_pVDE(vid_pVDE),        // input wire vid_pVDE
-  .vid_pHSync(vid_pHSync),    // input wire vid_pHSync
-  .vid_pVSync(vid_pVSync),    // input wire vid_pVSync
-  // .vid_pData(vid_regData2),      // input wire [23 : 0] vid_pData
-  // .vid_pVDE(vid_regVDE2),        // input wire vid_pVDE
-  // .vid_pHSync(vid_regHSync2),    // input wire vid_pHSync
-  // .vid_pVSync(vid_regVSync2),    // input wire vid_pVSync
+//  .vid_pData(vid_pData),      // input wire [23 : 0] vid_pData
+//  .vid_pVDE(vid_pVDE),        // input wire vid_pVDE
+//  .vid_pHSync(vid_pHSync),    // input wire vid_pHSync
+//  .vid_pVSync(vid_pVSync),    // input wire vid_pVSync
+   .vid_pData(vid_regData2),      // input wire [23 : 0] vid_pData
+   .vid_pVDE(vid_regVDE2),        // input wire vid_pVDE
+   .vid_pHSync(vid_regHSync2),    // input wire vid_pHSync
+   .vid_pVSync(vid_regVSync2),    // input wire vid_pVSync
   .PixelClk(PixelClk)        // input wire PixelClk
 );
 

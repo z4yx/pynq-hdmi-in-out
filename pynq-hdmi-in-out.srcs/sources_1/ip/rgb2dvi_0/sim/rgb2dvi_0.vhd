@@ -114,7 +114,7 @@ BEGIN
       kGenerateSerialClk => true,
       kClkPrimitive => "PLL",
       kRstActiveHigh => true,
-      kClkRange => 1,
+      kClkRange => 2,
       kD0Swap => false,
       kD1Swap => false,
       kD2Swap => false,

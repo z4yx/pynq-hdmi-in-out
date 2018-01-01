@@ -1,7 +1,7 @@
 -- Copyright 1986-2017 Xilinx, Inc. All Rights Reserved.
 -- --------------------------------------------------------------------------------
 -- Tool Version: Vivado v.2017.1 (lin64) Build 1846317 Fri Apr 14 18:54:47 MDT 2017
--- Date        : Sat Dec 30 00:54:17 2017
+-- Date        : Sun Dec 31 21:22:12 2017
 -- Host        : nuc6i7 running 64-bit Ubuntu 16.04.3 LTS
 -- Command     : write_vhdl -force -mode synth_stub
 --               /home/zhang/pynq-hdmi-in-out/pynq-hdmi-in-out.srcs/sources_1/ip/rgb2dvi_0/rgb2dvi_0_stub.vhdl
