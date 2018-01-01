@@ -20,56 +20,49 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module top(/*autoport*/
-//inout
-         FIXED_IO_mio,
-         FIXED_IO_ps_clk,
-         FIXED_IO_ps_porb,
-         FIXED_IO_ps_srstb,
-         hdmi_rx_scl,
-         hdmi_rx_sda,
-         hdmi_tx_scl,
-         hdmi_tx_sda,
-//output
-         hdmi_rx_hpd,
-         hdmi_tx_clk_n,
-         hdmi_tx_clk_p,
-         hdmi_tx_d_n,
-         hdmi_tx_d_p,
-         hdmi_tx_hpdn,
-         led,
-//input
-         hdmi_rx_clk_n,
-         hdmi_rx_clk_p,
-         hdmi_rx_d_n,
-         hdmi_rx_d_p,
-         sw);
-
-inout [53:0]FIXED_IO_mio;
-inout FIXED_IO_ps_clk;
-inout FIXED_IO_ps_porb;
-inout FIXED_IO_ps_srstb;
-
-
-input hdmi_rx_clk_n;
-input hdmi_rx_clk_p;
-input [2:0]hdmi_rx_d_n;
-input [2:0]hdmi_rx_d_p;
-inout hdmi_rx_scl;
-inout hdmi_rx_sda;
-output [0:0]hdmi_rx_hpd;
-
-output hdmi_tx_clk_n;
-output hdmi_tx_clk_p;
-output [2:0]hdmi_tx_d_n;
-output [2:0]hdmi_tx_d_p;
-inout hdmi_tx_scl;
-inout hdmi_tx_sda;
-output [0:0]hdmi_tx_hpdn;
-
-output[3:0] led;
-input [1:0] sw;
-
+module top(
+    inout [14:0]DDR_addr,
+    inout [2:0]DDR_ba,
+    inout DDR_cas_n,
+    inout DDR_ck_n,
+    inout DDR_ck_p,
+    inout DDR_cke,
+    inout DDR_cs_n,
+    inout [3:0]DDR_dm,
+    inout [31:0]DDR_dq,
+    inout [3:0]DDR_dqs_n,
+    inout [3:0]DDR_dqs_p,
+    inout DDR_odt,
+    inout DDR_ras_n,
+    inout DDR_reset_n,
+    inout DDR_we_n,
+    inout FIXED_IO_ddr_vrn,
+    inout FIXED_IO_ddr_vrp,
+    inout [53:0]FIXED_IO_mio,
+    inout FIXED_IO_ps_clk,
+    inout FIXED_IO_ps_porb,
+    inout FIXED_IO_ps_srstb,
+    
+    
+    input hdmi_rx_clk_n,
+    input hdmi_rx_clk_p,
+    input [2:0]hdmi_rx_d_n,
+    input [2:0]hdmi_rx_d_p,
+    inout hdmi_rx_scl,
+    inout hdmi_rx_sda,
+    output [0:0]hdmi_rx_hpd,
+    
+    output hdmi_tx_clk_n,
+    output hdmi_tx_clk_p,
+    output [2:0]hdmi_tx_d_n,
+    output [2:0]hdmi_tx_d_p,
+    inout hdmi_tx_scl,
+    inout hdmi_tx_sda,
+    input [0:0]hdmi_tx_hpdn,
+    
+    output[3:0] led,
+    input [1:0] sw
+);
 assign hdmi_tx_scl = 1'bz;
 assign hdmi_tx_sda = 1'bz;
 assign hdmi_rx_hpd = sw[0];
@@ -93,7 +86,7 @@ reg last_VSync, last_DE;
 assign aRst = ~FCLK_RESET0_N;
 assign led[0] = pRst;
 assign led[1] = aRst;
-assign led[3] = sw[1];
+assign led[3] = hdmi_tx_hpdn;
 
 always @(posedge PixelClk or negedge aPixelClkLckd) begin : proc_reset_ctl
     if(~aPixelClkLckd) begin
@@ -111,7 +104,7 @@ always @(posedge PixelClk) begin
     vid_regHSync <= vid_pHSync;
     vid_regVSync <= vid_pVSync;
     vid_regData <= (lineCnt==0) ? 24'hff0000 : 
-                    lineCnt==719 ? 24'h00ff00 : vid_pData;
+                    lineCnt==1079 ? 24'h00ff00 : vid_pData;
 
     vid_regVDE2 <= vid_regVDE;
     vid_regHSync2 <= vid_regHSync;
@@ -184,6 +177,23 @@ rgb2dvi_0 hdmi_tx (
 ps_blk ps_blk_i
    (.FCLK_CLK0(RefClk),
     .FCLK_RESET0_N(FCLK_RESET0_N),
+    .DDR_addr(DDR_addr),
+    .DDR_ba(DDR_ba),
+    .DDR_cas_n(DDR_cas_n),
+    .DDR_ck_n(DDR_ck_n),
+    .DDR_ck_p(DDR_ck_p),
+    .DDR_cke(DDR_cke),
+    .DDR_cs_n(DDR_cs_n),
+    .DDR_dm(DDR_dm),
+    .DDR_dq(DDR_dq),
+    .DDR_dqs_n(DDR_dqs_n),
+    .DDR_dqs_p(DDR_dqs_p),
+    .DDR_odt(DDR_odt),
+    .DDR_ras_n(DDR_ras_n),
+    .DDR_reset_n(DDR_reset_n),
+    .DDR_we_n(DDR_we_n),
+    .FIXED_IO_ddr_vrn(FIXED_IO_ddr_vrn),
+    .FIXED_IO_ddr_vrp(FIXED_IO_ddr_vrp),
     .FIXED_IO_mio(FIXED_IO_mio),
     .FIXED_IO_ps_clk(FIXED_IO_ps_clk),
     .FIXED_IO_ps_porb(FIXED_IO_ps_porb),

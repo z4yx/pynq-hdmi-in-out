@@ -1,4 +1,4 @@
-// (c) Copyright 1995-2017 Xilinx, Inc. All rights reserved.
+// (c) Copyright 1995-2018 Xilinx, Inc. All rights reserved.
 // 
 // This file contains confidential and proprietary information
 // of Xilinx, Inc. and is protected under U.S. and
@@ -61,6 +61,23 @@ module ps_blk_processing_system7_0_0 (
   FCLK_CLK0,
   FCLK_RESET0_N,
   MIO,
+  DDR_CAS_n,
+  DDR_CKE,
+  DDR_Clk_n,
+  DDR_Clk,
+  DDR_CS_n,
+  DDR_DRSTB,
+  DDR_ODT,
+  DDR_RAS_n,
+  DDR_WEB,
+  DDR_BankAddr,
+  DDR_Addr,
+  DDR_VRN,
+  DDR_VRP,
+  DDR_DM,
+  DDR_DQ,
+  DDR_DQS_n,
+  DDR_DQS,
   PS_SRSTB,
   PS_CLK,
   PS_PORB
@@ -72,6 +89,40 @@ output wire FCLK_CLK0;
 output wire FCLK_RESET0_N;
 (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO" *)
 inout wire [53 : 0] MIO;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CAS_N" *)
+inout wire DDR_CAS_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CKE" *)
+inout wire DDR_CKE;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CK_N" *)
+inout wire DDR_Clk_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CK_P" *)
+inout wire DDR_Clk;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR CS_N" *)
+inout wire DDR_CS_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR RESET_N" *)
+inout wire DDR_DRSTB;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ODT" *)
+inout wire DDR_ODT;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR RAS_N" *)
+inout wire DDR_RAS_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR WE_N" *)
+inout wire DDR_WEB;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR BA" *)
+inout wire [2 : 0] DDR_BankAddr;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR ADDR" *)
+inout wire [14 : 0] DDR_Addr;
+(* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRN" *)
+inout wire DDR_VRN;
+(* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO DDR_VRP" *)
+inout wire DDR_VRP;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DM" *)
+inout wire [3 : 0] DDR_DM;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQ" *)
+inout wire [31 : 0] DDR_DQ;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQS_N" *)
+inout wire [3 : 0] DDR_DQS_n;
+(* X_INTERFACE_INFO = "xilinx.com:interface:ddrx:1.0 DDR DQS_P" *)
+inout wire [3 : 0] DDR_DQS;
 (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_SRSTB" *)
 inout wire PS_SRSTB;
 (* X_INTERFACE_INFO = "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO PS_CLK" *)
@@ -788,23 +839,23 @@ inout wire PS_PORB;
     .EVENT_EVENTI(1'B0),
     .DDR_ARB(4'B0),
     .MIO(MIO),
-    .DDR_CAS_n(),
-    .DDR_CKE(),
-    .DDR_Clk_n(),
-    .DDR_Clk(),
-    .DDR_CS_n(),
-    .DDR_DRSTB(),
-    .DDR_ODT(),
-    .DDR_RAS_n(),
-    .DDR_WEB(),
-    .DDR_BankAddr(),
-    .DDR_Addr(),
-    .DDR_VRN(),
-    .DDR_VRP(),
-    .DDR_DM(),
-    .DDR_DQ(),
-    .DDR_DQS_n(),
-    .DDR_DQS(),
+    .DDR_CAS_n(DDR_CAS_n),
+    .DDR_CKE(DDR_CKE),
+    .DDR_Clk_n(DDR_Clk_n),
+    .DDR_Clk(DDR_Clk),
+    .DDR_CS_n(DDR_CS_n),
+    .DDR_DRSTB(DDR_DRSTB),
+    .DDR_ODT(DDR_ODT),
+    .DDR_RAS_n(DDR_RAS_n),
+    .DDR_WEB(DDR_WEB),
+    .DDR_BankAddr(DDR_BankAddr),
+    .DDR_Addr(DDR_Addr),
+    .DDR_VRN(DDR_VRN),
+    .DDR_VRP(DDR_VRP),
+    .DDR_DM(DDR_DM),
+    .DDR_DQ(DDR_DQ),
+    .DDR_DQS_n(DDR_DQS_n),
+    .DDR_DQS(DDR_DQS),
     .PS_SRSTB(PS_SRSTB),
     .PS_CLK(PS_CLK),
     .PS_PORB(PS_PORB)
