@@ -56,6 +56,9 @@
 `timescale 1ns/1ps
 
 module ps_blk_processing_system7_0_0 (
+USB0_PORT_INDCTL, 
+USB0_VBUS_PWRSELECT, 
+USB0_VBUS_PWRFAULT, 
 FCLK_CLK0, 
 FCLK_RESET0_N, 
 MIO, 
@@ -80,6 +83,9 @@ PS_SRSTB,
 PS_CLK, 
 PS_PORB 
 );
+output [1 : 0] USB0_PORT_INDCTL;
+output USB0_VBUS_PWRSELECT;
+input USB0_VBUS_PWRFAULT;
 output FCLK_CLK0;
 output FCLK_RESET0_N;
 input [53 : 0] MIO;
@@ -104,7 +110,7 @@ input PS_SRSTB;
 input PS_CLK;
 input PS_PORB;
 
-  processing_system7_vip_v1_0_0 #(
+  processing_system7_vip_v1_0_2 #(
     .C_USE_M_AXI_GP0(0),
     .C_USE_M_AXI_GP1(0),
     .C_USE_S_AXI_ACP(0),

@@ -1,16 +1,17 @@
 {
-   guistr: "# # String gsaved with Nlview 6.6.8  2016-12-21 bk=1.3817 VDI=40 GEI=35 GUI=JA:1.6
+   ExpandedHierarchyInLayout: "",
+   guistr: "# # String gsaved with Nlview 6.6.11  2017-06-12 bk=1.3860 VDI=40 GEI=35 GUI=JA:1.6
 #  -string -flagsOSRD
-preplace port DDR -pg 1 -y -170 -defaultsOSRD
+preplace port DDR -pg 1 -y -210 -defaultsOSRD
 preplace port FCLK_RESET0_N -pg 1 -y -120 -defaultsOSRD
 preplace port FIXED_IO -pg 1 -y -190 -defaultsOSRD
 preplace port FCLK_CLK0 -pg 1 -y -140 -defaultsOSRD
-preplace inst processing_system7_0 -pg 1 -lvl 1 -y -140 -defaultsOSRD
-preplace netloc processing_system7_0_DDR 1 1 1 N
-preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 320
-preplace netloc processing_system7_0_FIXED_IO 1 1 1 320
-preplace netloc processing_system7_0_FCLK_CLK0 1 1 1 320
-levelinfo -pg 1 0 180 340 -top -230 -bot 240
+preplace inst processing_system7_0 -pg 1 -lvl 1 -y -150 -defaultsOSRD
+preplace netloc processing_system7_0_DDR 1 1 1 100
+preplace netloc processing_system7_0_FCLK_RESET0_N 1 1 1 110
+preplace netloc processing_system7_0_FIXED_IO 1 1 1 110
+preplace netloc processing_system7_0_FCLK_CLK0 1 1 1 100
+levelinfo -pg 1 -190 -40 340 -top -240 -bot 240
 ",
 }
 {
